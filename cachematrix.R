@@ -1,7 +1,9 @@
 ## The function is used to calculate the inverse of a matrix and cache
-## the value for later use.
+## the value for later use in order to avoid time-consuming recomputation.
 
 ## This function creates a special "matrix" object that can cache its inverse.
+## If the matrix given is not suitable for inversion operation, a warning will
+## jump out.
 
 makeCacheMatrix <- function(x = matrix()) {
     inverse <- NULL
@@ -23,8 +25,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## This function computes the inverse of the special "matrix" 
-## returned by makeCacheMatrix above. 
+## This function computes the inverse of the special "matrix" returned 
+## by makeCacheMatrix above. If the matrix has been cached before, the cached
+## value will be returned. Otherwise, it will proceed to the solve function.
 
 cacheSolve <- function(x, ...) {
   inverse <- x$getmatrix()
